@@ -1,4 +1,5 @@
-fileObj = File.read("file_inputs.txt")
-while (line = fileObj.gets)
-    puts line
-end
+fileObj = File.open("file_inputs.txt", "r")
+fileObj.each_line do |line|
+        puts line
+    end
+fileObj.close
