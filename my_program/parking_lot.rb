@@ -17,12 +17,13 @@ class ParkingLot
     end
 
     def park(plate: nil, color: nil)
-        parked = false
+        id = false
         @slots.each do |slot|
-            if slot.vehicle == nil
+            if slot.vehicle == nil && id == false
                 slot.vehicle = Vehicle.new(plate, color)
-                parked = true
+                id = slot.id
             end
         end
+        return id
     end
 end
