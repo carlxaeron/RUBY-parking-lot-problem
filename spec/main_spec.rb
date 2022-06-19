@@ -1,5 +1,5 @@
-require './my_program.rb'
-require './spec/file.rb'
+require './my_program/main'
+require './spec/file'
 
 file = Files.new
 
@@ -8,6 +8,8 @@ file.create('hello world
 1234
 abcdefghijklmnopqrstuvwxyz
 ')
+
+main(file.filename)
 
 # delete file
 file.delete
