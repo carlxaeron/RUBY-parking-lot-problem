@@ -1,3 +1,9 @@
 require './my_program/main'
 
-Main.new
+main = Main.new
+
+while (command = gets.chomp) != "exit"
+    main.process_cmd(command)
+end
+
+
