@@ -3,13 +3,18 @@ require './spec/file'
 
 file = Files.new
 
-# create a input file
-file.create('hello world
-1234
-abcdefghijklmnopqrstuvwxyz
-')
+# create an input file and read and delete
+file.create('create_parking_lot 6')
+main = Main.new("#{file.filename}.txt")
 
-main(file.filename)
+describe Main do
+    describe 'Parking' do
+        context "slots" do
+            it "returns 6" do
+                expect(main.Parking.slots.length).to eq 6
+            end
+        end
+    end
+end
 
-# delete file
-file.delete
+file.delete()

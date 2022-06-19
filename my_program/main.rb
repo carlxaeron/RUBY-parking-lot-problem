@@ -24,7 +24,5 @@ class Main
                 process_cmd(line)
             end
         fileObj.close
-    
-        puts @Parking.inspect
     end
 end
