@@ -19,7 +19,7 @@ class Main
                 @output.push("Created a parking lot with #{cmd[1]} slots")
             when "park"
                 slot = @Parking.park(plate: cmd[1], color: cmd[2])
-                @output.push("Allocated slot number: #{slot}")
+                slot ? @output.push("Allocated slot number: #{slot}") : @output.push("Sorry, parking lot is full")
             when "leave"
                 @Parking.leave(cmd[1])
                 @output.push("Slot number #{cmd[1]} is free")
