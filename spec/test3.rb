@@ -9,7 +9,7 @@ park ABC-2701 Blue
 park ABC-3141 Black
 leave 4')
 main = Main.new("#{file.filename}.txt")
-describe Main do
+describe 'Test3' do
     describe 'Parking' do
         context "slots" do
             it "returns 8" do

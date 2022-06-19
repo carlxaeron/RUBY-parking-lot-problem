@@ -26,4 +26,8 @@ class ParkingLot
         end
         return id
     end
+
+    def leave(num)
+        @slots[num.to_i - 1] = Slot.new(num)
+    end
 end

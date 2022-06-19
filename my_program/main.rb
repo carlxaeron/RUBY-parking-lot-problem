@@ -20,6 +20,9 @@ class Main
             when "park"
                 slot = @Parking.park(plate: cmd[1], color: cmd[2])
                 @output.push("Allocated slot number: #{slot}")
+            when "leave"
+                @Parking.leave(cmd[1])
+                @output.push("Slot number #{cmd[1]} is free")
         end
     end
     
