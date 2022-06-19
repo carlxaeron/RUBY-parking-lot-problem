@@ -14,6 +14,8 @@ class Main
         case cmd[0]
             when "create_parking_lot"
                 @Parking.create_parking_lot(cmd[1])
+            when "park"
+                @Parking.park(plate: cmd[1], color: cmd[2])
         end
     end
     
