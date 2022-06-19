@@ -47,14 +47,8 @@ describe 'Test4' do
             it "returns not []" do
                 expect(main.output).not_to eq []
             end
-            it "returns true on Created" do
+            it "return true on Created" do
                 expect(main.output.join("\n")).to match(/Created/)
-            end
-            it "returns true on status #1" do
-                expect(main.output.join("\n")).to match(/Slot No. | Plate No | Colour/)
-            end
-            it "returns true on status #2" do
-                expect(main.output.join("\n")).to match(/3 | ABC-1234 | White/)
             end
         end
     end

@@ -23,6 +23,15 @@ class Main
             when "leave"
                 @Parking.leave(cmd[1])
                 @output.push("Slot number #{cmd[1]} is free")
+            when "status"
+                @output.push("")
+                @output.push("Slot No. | Plate No | Colour")
+                @Parking.slots.each do |slot|
+                    if(slot.vehicle != nil)
+                        @output.push("#{slot.id} | #{slot.vehicle.plate} | #{slot.vehicle.color}")
+                    end
+                end
+                @output.push("")
         end
     end
     
