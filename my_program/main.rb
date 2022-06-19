@@ -2,9 +2,11 @@ require './my_program/parking_lot'
 
 class Main
     attr_accessor :Parking
+    attr_accessor :output
     
     def initialize(file = nil)
         @Parking = ParkingLot.new
+        @output = []
 
         main(file)
     end
@@ -14,8 +16,10 @@ class Main
         case cmd[0]
             when "create_parking_lot"
                 @Parking.create_parking_lot(cmd[1])
+                @output.push("Created a parking lot with #{cmd[1]} slots")
             when "park"
-                @Parking.park(plate: cmd[1], color: cmd[2])
+                slot = @Parking.park(plate: cmd[1], color: cmd[2])
+                @output.push("Allocated slot number: #{slot}")
         end
     end
     
@@ -26,5 +30,7 @@ class Main
                 process_cmd(line)
             end
         fileObj.close
+
+        puts @output
     end
 end
