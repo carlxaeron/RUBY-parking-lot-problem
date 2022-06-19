@@ -1,8 +1,8 @@
 class Files
     attr_accessor :filename
 
-    def initialize()
-        @filename = rand(1..100)
+    def initialize(file = nil)
+        @filename = file || rand(1..100)
     end
 
     def create(txt)
@@ -15,5 +15,13 @@ class Files
 
     def delete
         File.delete("#{@filename}.txt")
+    end
+
+    def read
+        f = File.open("#{@filename}.txt", "r")
+        f.each_line do |line|
+            puts line
+        end
+        f.close
     end
 end
