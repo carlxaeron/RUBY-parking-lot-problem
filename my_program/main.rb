@@ -78,6 +78,9 @@ class Main
                     @output.push(puts _txt.length > 0 ? _txt.join(", ") : "Not found")
                 when "help"
                     puts "\ncreate_parking_lot {number}\npark {pleate number} {color}\nleave {slot number}\nstatus"
+                when "exit"
+                    puts "Thank you! -carl louis manuel"
+                    exit
                 else
                     puts "unknown command. to check all available commands type 'help'. to exit type 'exit'."
             end
