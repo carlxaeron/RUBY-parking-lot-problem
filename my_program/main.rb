@@ -3,12 +3,18 @@ require './my_program/parking_lot'
 class Main
     attr_accessor :Parking
     attr_accessor :output
-    
-    def initialize(file = nil)
+
+    def initialize
         @Parking = ParkingLot.new
         @output = []
-
-        main(file)
+    end
+    
+    def init(file = nil, cmd = nil)
+        if(file != nil)
+            main(file)
+        else
+            process_cmd(cmd)
+        end
     end
     
     def process_cmd(txt)
@@ -16,22 +22,26 @@ class Main
         case cmd[0]
             when "create_parking_lot"
                 @Parking.create_parking_lot(cmd[1])
-                @output.push("Created a parking lot with #{cmd[1]} slots")
+                @output.push(puts "Created a parking lot with #{cmd[1]} slots")
             when "park"
                 slot = @Parking.park(plate: cmd[1], color: cmd[2])
-                slot ? @output.push("Allocated slot number: #{slot}") : @output.push("Sorry, parking lot is full")
+                slot ? @output.push(puts "Allocated slot number: #{slot}") : @output.push(puts "Sorry, parking lot is full")
             when "leave"
-                @Parking.leave(cmd[1])
-                @output.push("Slot number #{cmd[1]} is free")
+                _exists = @Parking.leave(cmd[1])
+                _exists ? @output.push(puts "Slot number #{cmd[1]} is free") : puts("Slot number not exists")
             when "status"
-                @output.push("")
-                @output.push("Slot No. | Plate No | Colour")
+                @output.push(puts "")
+                @output.push(puts "Slot No. | Plate No | Colour")
                 @Parking.slots.each do |slot|
-                    if(slot.vehicle != nil)
-                        @output.push("#{slot.id} | #{slot.vehicle.plate} | #{slot.vehicle.color}")
+                    if(slot && slot.vehicle != nil)
+                        @output.push(puts "#{slot.id} | #{slot.vehicle.plate} | #{slot.vehicle.color}")
                     end
                 end
-                @output.push("")
+                @output.push(puts "")
+            when "help"
+                puts "\ncreate_parking_lot {number}\npark {pleate number} {color}\nleave {slot number}\nstatus"
+            else
+                puts "unknown command. to check all available commands type 'help'. to exit type 'exit'."
         end
     end
     

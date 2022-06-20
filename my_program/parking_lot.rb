@@ -18,16 +18,23 @@ class ParkingLot
 
     def park(plate: nil, color: nil)
         id = false
-        @slots.each do |slot|
-            if slot.vehicle == nil && id == false
-                slot.vehicle = Vehicle.new(plate, color)
-                id = slot.id
+        if(@slots.length != 0)
+            @slots.each do |slot|
+                if slot && slot.vehicle == nil && id == false
+                    slot.vehicle = Vehicle.new(plate, color)
+                    id = slot.id
+                end
             end
         end
         return id
     end
 
     def leave(num)
-        @slots[num.to_i - 1] = Slot.new(num)
+        if(@slots[num.to_i - 1].nil?)
+            return false
+        else
+            @slots[num.to_i - 1] = Slot.new(num)
+            return true
+        end
     end
 end
