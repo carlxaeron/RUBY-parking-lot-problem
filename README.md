@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Hi I am Carl Louis Manuel
+### Parking Lot Interactive mode and File mode
 
-Things you may want to cover:
+**To run the program and launch the shell:**
+$` my_program`
+**To run the program and launch the shell(windows):**
+$` ruby my_program.rb`
 
-* Ruby version
+**While in interactive mode:**
+1. to list all available commands
+$` help`
+2. to exit
+$` exit`
 
-* System dependencies
+**To run the program with file_inputs.txt:**
+$` my_program file_inputs.txt`
+**To run the program with file_inputs.txt(windows):**
+$` ruby my_program.rb file_inputs.txt`
 
-* Configuration
+**To run the program with file_inputs.txt and output it to a txt file:**
+$` my_program file_inputs.txt > output.txt`
+**To run the program with file_inputs.txt and output it to a txt file(windows):**
+$` ruby my_program.rb file_inputs.txt > output.txt`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**This has TDD (test-driven development)**
+$` rspec`
