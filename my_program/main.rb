@@ -46,6 +46,36 @@ class Main
                         end
                     end
                     @output.push(puts "")
+                when "plate_numbers_for_cars_with_colour"
+                    _txt = []
+                    @Parking.slots.each do |slot|
+                        if(slot && slot.vehicle != nil)
+                            if(slot.vehicle.color == cmd[1])
+                                _txt.push(slot.vehicle.plate)
+                            end
+                        end
+                    end
+                    @output.push(puts _txt.length > 0 ? _txt.join(", ") : "Not found")
+                when "slot_numbers_for_cars_with_colour"
+                    _txt = []
+                    @Parking.slots.each do |slot|
+                        if(slot && slot.vehicle != nil)
+                            if(slot.vehicle.color == cmd[1])
+                                _txt.push(slot.id)
+                            end
+                        end
+                    end
+                    @output.push(puts _txt.length > 0 ? _txt.join(", ") : "Not found")
+                when "slot_number_for_registration_number"
+                    _txt = []
+                    @Parking.slots.each do |slot|
+                        if(slot && slot.vehicle != nil)
+                            if(slot.vehicle.plate == cmd[1])
+                                _txt.push(slot.id)
+                            end
+                        end
+                    end
+                    @output.push(puts _txt.length > 0 ? _txt.join(", ") : "Not found")
                 when "help"
                     puts "\ncreate_parking_lot {number}\npark {pleate number} {color}\nleave {slot number}\nstatus"
                 else
