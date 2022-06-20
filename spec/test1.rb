@@ -7,7 +7,8 @@ park ABC-0001 Black
 park ABC-7777 Red
 park ABC-2701 Blue
 park ABC-3141 Black')
-main = Main.new("#{file.filename}.txt")
+main = Main.new
+main.init("#{file.filename}.txt")
 describe 'Test1' do
     describe 'Parking' do
         context "slots" do

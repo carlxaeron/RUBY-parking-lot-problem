@@ -18,30 +18,39 @@ class Main
     end
     
     def process_cmd(txt)
-        cmd = txt.split ' '
-        case cmd[0]
-            when "create_parking_lot"
-                @Parking.create_parking_lot(cmd[1])
-                @output.push(puts "Created a parking lot with #{cmd[1]} slots")
-            when "park"
-                slot = @Parking.park(plate: cmd[1], color: cmd[2])
-                slot ? @output.push(puts "Allocated slot number: #{slot}") : @output.push(puts "Sorry, parking lot is full")
-            when "leave"
-                _exists = @Parking.leave(cmd[1])
-                _exists ? @output.push(puts "Slot number #{cmd[1]} is free") : puts("Slot number not exists")
-            when "status"
-                @output.push(puts "")
-                @output.push(puts "Slot No. | Plate No | Colour")
-                @Parking.slots.each do |slot|
-                    if(slot && slot.vehicle != nil)
-                        @output.push(puts "#{slot.id} | #{slot.vehicle.plate} | #{slot.vehicle.color}")
+        cmd = nil
+        if(defined?(txt.split))
+            cmd = txt.split ' '
+        else
+            cmd = txt
+        end
+
+        if(cmd.nil?)
+        else
+            case cmd[0]
+                when "create_parking_lot"
+                    @Parking.create_parking_lot(cmd[1])
+                    @output.push(puts "Created a parking lot with #{cmd[1]} slots")
+                when "park"
+                    slot = @Parking.park(plate: cmd[1], color: cmd[2])
+                    slot ? @output.push(puts "Allocated slot number: #{slot}") : @output.push(puts(@Parking.slots.length > 0 ? "Sorry, parking lot is full" : "Please create parking lot first."))
+                when "leave"
+                    _exists = @Parking.leave(cmd[1])
+                    _exists ? @output.push(puts "Slot number #{cmd[1]} is free") : puts("Slot number not exists")
+                when "status"
+                    @output.push(puts "")
+                    @output.push(puts "Slot No. | Plate No | Colour")
+                    @Parking.slots.each do |slot|
+                        if(slot && slot.vehicle != nil)
+                            @output.push(puts "#{slot.id} | #{slot.vehicle.plate} | #{slot.vehicle.color}")
+                        end
                     end
-                end
-                @output.push(puts "")
-            when "help"
-                puts "\ncreate_parking_lot {number}\npark {pleate number} {color}\nleave {slot number}\nstatus"
-            else
-                puts "unknown command. to check all available commands type 'help'. to exit type 'exit'."
+                    @output.push(puts "")
+                when "help"
+                    puts "\ncreate_parking_lot {number}\npark {pleate number} {color}\nleave {slot number}\nstatus"
+                else
+                    puts "unknown command. to check all available commands type 'help'. to exit type 'exit'."
+            end
         end
     end
     

@@ -1,7 +1,8 @@
 # create an input file and read and delete
 file = Files.new
 file.create('create_parking_lot 6')
-main = Main.new("#{file.filename}.txt")
+main = Main.new
+main.init("#{file.filename}.txt")
 describe 'Test2' do
     describe 'Parking' do
         context "slots" do
