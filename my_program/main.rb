@@ -9,14 +9,6 @@ class Main
         @output = []
     end
     
-    def init(file = nil, cmd = nil)
-        if(file != nil)
-            main(file)
-        else
-            process_cmd(cmd)
-        end
-    end
-    
     def process_cmd(txt)
         cmd = nil
         if(defined?(txt.split))
