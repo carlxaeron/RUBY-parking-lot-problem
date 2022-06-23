@@ -77,7 +77,7 @@ class Main
                     end
                     @output.push(puts _txt.length > 0 ? _txt.join(", ") : "Not found")
                 when "help"
-                    puts "\ncreate_parking_lot {number}\npark {pleate number} {color}\nleave {slot number}\nstatus\nplate_numbers_for_cars_with_colour {color}\nslot_numbers_for_cars_with_colour {color}\nslot_number_for_registration_number {plate number}"
+                    puts "\ncreate_parking_lot {number}\npark {plate number} {color}\nleave {slot number}\nstatus\nplate_numbers_for_cars_with_colour {color}\nslot_numbers_for_cars_with_colour {color}\nslot_number_for_registration_number {plate number}"
                 when "exit"
                     puts "Thank you! -carl louis manuel"
                     exit
@@ -85,17 +85,5 @@ class Main
                     puts "unknown command. to check all available commands type 'help'. to exit type 'exit'."
             end
         end
-    end
-    
-    def main(file)
-        # when command does not have input file argument then default to file_inputs.txt
-        fileObj = File.open(file || ARGV[0] || "file_inputs.txt", "r")
-        fileObj.each_line do |line|
-                process_cmd(line)
-            end
-        fileObj.close
-
-        puts @output
-
     end
 end
